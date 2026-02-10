@@ -53,9 +53,20 @@ This file contains:
 
 ---
 
-## Next Steps (Phase 2)
-In the next phase, machine learning models will be trained using the cleaned dataset. This includes:
-- Train/test split  
-- Feature extraction using TF-IDF  
-- Training and evaluation of classification models  
-- Analysis of class imbalance effects
+## Phase 2: Model Training and Evaluation
+
+In this phase, the cleaned dataset from Phase 1 is used to train and evaluate machine learning models for support ticket classification.
+
+The data is split into training, validation, and test sets using stratified sampling to preserve the original class distribution. Text data is transformed into numerical feature vectors using TF-IDF.
+
+Due to a strong class imbalance, different balancing strategies were evaluated. Oversampling of minority classes resulted in the best performance and was therefore applied to the training set.
+
+Several classification models were considered, and Random Forest was selected based on validation performance and robustness. Model performance is evaluated using a confusion matrix and a classification report.
+
+Hyperparameter tuning is performed using GridSearchCV. The tuning process leads to only marginal improvements, indicating that classical machine learning methods may have reached their performance limit for this task.
+
+In the next phase, deep learning-based approaches will be explored to further improve classification performance.
+
+
+## Phase 3: Deep Learning Approaches
+In Phase 3, deep learning models are applied to the ticket classification task in order to better capture semantic relationships in the text data.
