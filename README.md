@@ -1,4 +1,4 @@
-# Set-Up
+# Setup
 This section provides instructions for setting up the environment to run the code in this repository. You can choose to use either `conda` or `pip` for managing your Python environment and dependencies. The used python version is 3.11 and the required packages are listed in the `requirements.txt` file.
 
 Create and activate a virtual environment using `conda`.
@@ -76,3 +76,4 @@ Register the environment as a Jupyter kernel:
 ```bash
 python -m ipykernel install --user --name=pytorch311 --display-name="Python 3.11 (pytorch311)"
 ```
+
