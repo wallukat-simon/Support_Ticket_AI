@@ -1,5 +1,5 @@
 # Setup
-This section provides instructions for setting up the environment to run the code in this repository. You can choose to use either `conda` or `pip` for managing your Python environment and dependencies. The used python version is 3.11 and the required packages are listed in the `requirements.txt` file.
+This section provides instructions for setting up the environment to run the code in this repository. You can choose to use either `conda` or `pip` for managing your Python environment and dependencies. For reference, the tested Python versions were Python3.11 and Python3.12.
 
 Create and activate a virtual environment using `conda`.
 ## With conda
@@ -16,11 +16,11 @@ conda install numpy=1.26.4 nltk=3.8.1 numpy-base=1.26.4 pandas=2.3.3 scikit-lear
 #### 2. Install PyTorch separately based on your system configuration:
 Without CUDA support:
 ```bash
-conda install pytorch torchvision torchaudio cpuonly -c pytorch -y
+conda install pytorch cpuonly -c pytorch -y
 ```
 With CUDA support:
 ```bash
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia -y
+conda install pytorch pytorch-cuda=11.8 -c pytorch -c nvidia -y
 ```
 
 Check the installation:
@@ -35,7 +35,7 @@ conda install jupyter nb_conda_kernels ipykernel -y
 
 Register the environment as a Jupyter kernel:
 ```bash
-python -m ipykernel install --user --name=pytorch311 --display-name="Conda Python3.11"
+python -m ipykernel install --user --name=pytorch311 --display-name="Conda Env"
 ```
 
 
@@ -55,11 +55,11 @@ pip install -r requirements.txt
 #### 2. Install PyTorch separately based on your system configuration:
 Without CUDA support:
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 With CUDA support:
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
 
 Check the installation:
@@ -74,6 +74,6 @@ pip install jupyter ipykernel
 
 Register the environment as a Jupyter kernel:
 ```bash
-python -m ipykernel install --user --name=pytorch311 --display-name="Python 3.11 (pytorch311)"
+python -m ipykernel install --user --name=pytorch311 --display-name="Pip Env"
 ```
 
