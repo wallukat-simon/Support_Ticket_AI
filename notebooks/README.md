@@ -1,22 +1,20 @@
-# Support Ticket Classification – Phase 1: Data Exploration & Preprocessing
-
-## Project Overview
+# Support Ticket Classification 
+#### Project Overview
 The goal of this project is to build a machine learning system that automatically classifies customer support tickets into predefined categories based on their textual content.
 
 In Phase 1, the dataset is explored and preprocessed to create a clean and structured input for subsequent machine learning models.
 
----
-
-## Dataset
+#### Dataset
 The dataset consists of customer support tickets with the following relevant fields:
 - `title`: short summary of the issue  
 - `body`: detailed description of the issue  
 - `label`: ticket category (e.g. billing, technical support, account)  
 - `priority`: urgency level (low, medium, high)
 
----
 
-## Exploratory Data Analysis
+## Phase 1: Data Exploration & Preprocessing
+
+#### Exploratory Data Analysis
 The following aspects were analyzed:
 - Distribution of ticket categories  
 - Distribution of priority levels  
@@ -25,9 +23,7 @@ The following aspects were analyzed:
 
 The analysis revealed a strong class imbalance and a wide variation in ticket lengths, reflecting realistic customer support data.
 
----
-
-## Text Preprocessing
+#### Text Preprocessing
 To prepare the text data for machine learning, the following preprocessing steps were applied:
 - Combination of ticket title and body into a single text field  
 - Lowercasing  
@@ -38,9 +34,7 @@ To prepare the text data for machine learning, the following preprocessing steps
 
 After preprocessing, each ticket is represented by a cleaned text field containing mainly content-bearing words.
 
----
-
-## Output of Phase 1
+#### Output of Phase 1
 The result of this phase is a cleaned dataset that can be directly used for model training in Phase 2.
 
 Output file:
@@ -67,6 +61,21 @@ Hyperparameter tuning is performed using GridSearchCV. The tuning process leads 
 
 In the next phase, deep learning-based approaches will be explored to further improve classification performance.
 
+---
 
 ## Phase 3: Deep Learning Approaches
 In Phase 3, deep learning models are applied to the ticket classification task in order to better capture semantic relationships in the text data.
+
+An LSTM was chosen as the baseline deep learning model because it explicitly models word order and long-range dependencies in text, providing a more expressive representation than traditional bag-of-words approaches while remaining computationally efficient and interpretable.
+
+The deep learning workflow implemented in [notebooks/deep_learning.ipynb](notebooks/deep_learning.ipynb) includes:
+- Loading the cleaned dataset (`dataset_en_clean.csv`) and encoding the target labels.
+- Tokenizing text with a whitespace tokenizer and building a vocabulary of the most frequent words.
+- Converting tickets to integer sequences and padding/truncating to a fixed length (80 tokens).
+- Creating a stratified train/test split and wrapping data in a custom PyTorch `Dataset` and `DataLoader`.
+- Defining an LSTM classifier with embeddings, a (bi-directional) LSTM encoder, dropout, and a linear classification head.
+- Handling class imbalance with weighted cross-entropy loss and training for 75 epochs with gradient clipping.
+- Evaluating performance using a classification report and saving the trained model state to `lstm_classifier_state.pt`.
+
+Results:
+- The LSTM-based model did not outperform the classical TF-IDF baseline. The most likely contributors are the limited dataset size, class imbalance, and the strong performance of keyword-based TF-IDF features for this task.
