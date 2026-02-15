@@ -10,7 +10,7 @@ conda activate <env_name>
 
 #### 1. Install the required packages:
 ```bash
-conda install numpy=1.26.4 nltk=3.8.1 numpy-base=1.26.4 pandas=2.3.3 scikit-learn=1.8.0 seaborn=0.13.2 matplotlib=3.10.8  imbalanced-learn=0.14.1 -y
+conda install numpy=1.26.4 nltk=3.8.1 numpy-base=1.26.4 pandas=2.3.3 scikit-learn=1.8.0 seaborn=0.13.2 matplotlib=3.10.8  imbalanced-learn=0.14.1 transformers=4.57.1 -y
 ```
 
 #### 2. Install PyTorch separately based on your system configuration:
