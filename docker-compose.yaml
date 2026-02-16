@@ -1,0 +1,22 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api.dockerfile
+    container_name: ticket_api
+    ports:
+      - "8000:8000"
+    restart: always
+
+  ui:
+    build:
+      context: .
+      dockerfile: ui.dockerfile
+    container_name: ticket_ui
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000/predict
+    depends_on:
+      - api
+    restart: always
